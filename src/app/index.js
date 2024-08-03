@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         display: "flex",
         top: 30,
-        gap:25
+        gap: 25
     },
     btn: {
         width: 160,
@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
-    btnName:{
-        textAlign:"center",
+    btnName: {
+        textAlign: "center",
         color: "white",
         fontSize: 20,
         fontFamily: "bold",
