@@ -1,12 +1,12 @@
 import { StatusBar } from "expo-status-bar";
-import { ScrollView, Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { ScrollView, Text, View, StyleSheet, TouchableOpacity, Button } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import TopBar from "../components/TopBar";
 
 export default function App() {
-    const qtdeDuplas = 10;
-    const qtdeHomens = 14;
-    const qtdeMulheres = 6;
+    // const qtdeDuplas = 10;
+    // const qtdeHomens = 14;
+    // const qtdeMulheres = 6;
 
     return (
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
@@ -27,7 +27,7 @@ export default function App() {
                     </TouchableOpacity>
                 </View>
             </ScrollView>
-            <View style={styles.estatisticas}>
+            {/* <View style={styles.estatisticas}>
                 <Text style={styles.title}>Estatísticas</Text>
                 <View style={styles.itemContainer}>
                     <Text style={styles.item}>Quantidade de duplas: {qtdeDuplas}</Text>
@@ -38,7 +38,7 @@ export default function App() {
                 <View style={styles.itemContainer}>
                     <Text style={styles.item}>Quantidade de mulheres: {qtdeMulheres}</Text>
                 </View>
-            </View>
+            </View> */}
             <StatusBar style="auto" />
         </ScrollView>
     );
@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
         textAlign: "center",
         color: "white",
         fontSize: 18,
-        fontWeight: "bold",
         marginTop: 10,
+        fontFamily: "semibolditalic",
     },
     estatisticas: {
         backgroundColor: "transparent",
