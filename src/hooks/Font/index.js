@@ -29,9 +29,7 @@ export default function FontProvider({ children }) {
             </View>
         )
     }
-    return <FontContext.Provider value={{}}>
-        {children}
-    </FontContext.Provider>
+    return <FontContext.Provider value={{loaded}}>{children}</FontContext.Provider>
 }
 export function useFont() {
     const context = useContext(FontContext);

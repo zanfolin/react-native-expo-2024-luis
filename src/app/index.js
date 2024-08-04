@@ -1,20 +1,25 @@
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, Text, View, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import { ScrollView, Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import TopBar from "../components/TopBar";
+
 export default function App() {
+    const qtdeDuplas = 10;
+    const qtdeHomens = 14;
+    const qtdeMulheres = 6;
+
     return (
-        <SafeAreaView style={{ flex: 1, alignItems: "center" }}>
+        <ScrollView contentContainerStyle={styles.scrollViewContent}>
             <TopBar />
-            <ScrollView horizontal={true}>
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                 <View style={styles.containerItems}>
                     <TouchableOpacity style={styles.btn}>
                         <Ionicons name="add" size={50} color="white" />
-                        <Text style={styles.btnName}>adicionar dupla</Text>
+                        <Text style={styles.btnName}>Adicionar Dupla</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.btn}>
                         <Ionicons name="people" size={50} color="white" />
-                        <Text style={styles.btnName}>Lista de duplas</Text>
+                        <Text style={styles.btnName}>Lista de Duplas</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.btn}>
                         <Ionicons name="search" size={50} color="white" />
@@ -22,23 +27,36 @@ export default function App() {
                     </TouchableOpacity>
                 </View>
             </ScrollView>
-            <View style={styles.carrossel}></View>
+            <View style={styles.estatisticas}>
+                <Text style={styles.title}>Estatísticas</Text>
+                <View style={styles.itemContainer}>
+                    <Text style={styles.item}>Quantidade de duplas: {qtdeDuplas}</Text>
+                </View>
+                <View style={styles.itemContainer}>
+                    <Text style={styles.item}>Quantidade de homens: {qtdeHomens}</Text>
+                </View>
+                <View style={styles.itemContainer}>
+                    <Text style={styles.item}>Quantidade de mulheres: {qtdeMulheres}</Text>
+                </View>
+            </View>
             <StatusBar style="auto" />
-        </SafeAreaView>
+        </ScrollView>
     );
 }
+
 const styles = StyleSheet.create({
+    scrollViewContent: {
+    },
     title: {
-        fontFamily: "regular",
-        fontSize: 40
+        fontSize: 30,
+        fontWeight: "bold",
+        marginBottom: 20,
     },
     containerItems: {
-        width: "100%",
-        height: 100,
         flexDirection: "row",
-        display: "flex",
-        top: 30,
-        gap: 25
+        justifyContent: "space-between",
+        marginBottom: 20,
+        marginTop:10,
     },
     btn: {
         width: 160,
@@ -47,11 +65,31 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         justifyContent: "center",
         alignItems: "center",
+        marginHorizontal: 10,
     },
     btnName: {
         textAlign: "center",
         color: "white",
+        fontSize: 18,
+        fontWeight: "bold",
+        marginTop: 10,
+    },
+    estatisticas: {
+        backgroundColor: "transparent",
+        alignItems: "center",
+        marginTop: 20,
+    },
+    item: {
         fontSize: 20,
-        fontFamily: "bold",
-    }
+        marginVertical: 10,
+    },
+    itemContainer: {
+        width: "100%",
+        padding: 10,
+        borderWidth: 1,
+        borderColor: "#ccc",
+        borderRadius: 10,
+        alignItems: "center",
+        marginVertical: 5,
+    },
 });
