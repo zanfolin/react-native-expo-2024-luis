@@ -1,25 +1,20 @@
 import { StatusBar } from "expo-status-bar";
-import { ScrollView, Text, View, StyleSheet, Linking } from "react-native";
-import TopBar from "../components/TopBar";
-import Pager from "../components/PagerView";
-import Actions from "../components/ActionsApp";
+import { Text, View, StyleSheet, Button } from "react-native";
+import { useAuth } from "../hooks/Auth";
 export default function App() {
-    // const qtdeDuplas = 10;
-    // const qtdeHomens = 14;
-    // const qtdeMulheres = 6;
+    const { signIn, signOut } = useAuth();
 
 
     return (
         <>
-         {/* <ScrollView contentContainerStyle={styles.scrollViewContent}> */}
-            {/* <TopBar /> */}
-            {/* <Actions /> */}
-            {/* <Pager /> */}
-            <View style={{justifyContent:"center", alignItems:"center"}}>
-                <Text>App Funcionando</Text>
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+                <Text>App funcionando para caralho</Text>
+                <Button title="SignIn Super" onPress={() => signIn({ email: "super@email.com", password: "Super123!" })} />
+                <Button title="SignIn User" onPress={() => signIn({ email: "user@email.com", password: "User123!" })} />
+                <Button title="SignIn ADM" onPress={() => signIn({ email: "adm@email.com", password: "Adm123!" })} />
+                <Button title="SignOut" onPress={() => signOut()} />
+                <StatusBar style="auto" />
             </View>
-            <StatusBar style="auto" />
-        {/* </ScrollView> */}
         </>
     );
 }
