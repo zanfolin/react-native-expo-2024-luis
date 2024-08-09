@@ -1,6 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { ScrollView, Text, View, StyleSheet, TouchableOpacity, Linking } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { ScrollView, Text, View, StyleSheet, Linking } from "react-native";
 import TopBar from "../components/TopBar";
 import Pager from "../components/PagerView";
 import Actions from "../components/ActionsApp";
@@ -9,22 +8,25 @@ export default function App() {
     // const qtdeHomens = 14;
     // const qtdeMulheres = 6;
 
-    
-    const abrirInstagram = () => {
-        Linking.openURL('https://www.instagram.com/beachtennispiquerobi/');
-    };
+
     return (
-        <ScrollView contentContainerStyle={styles.scrollViewContent}>
-            <TopBar />
-            <Actions />
-            <Pager />
+        <>
+         {/* <ScrollView contentContainerStyle={styles.scrollViewContent}> */}
+            {/* <TopBar /> */}
+            {/* <Actions /> */}
+            {/* <Pager /> */}
+            <View style={{justifyContent:"center", alignItems:"center"}}>
+                <Text>App Funcionando</Text>
+            </View>
             <StatusBar style="auto" />
-        </ScrollView>
+        {/* </ScrollView> */}
+        </>
     );
 }
 
 const styles = StyleSheet.create({
     scrollViewContent: {
+        backgroundColor: "#ffa",
     },
     title: {
         fontSize: 30,

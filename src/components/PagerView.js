@@ -55,28 +55,34 @@ const styles = StyleSheet.create({
         height: '70%',
     },
     textoCarrossel: {
-        fontSize: 20,
+        fontSize: 22,
         color: 'black',
         textAlign: 'center',
         marginTop: 20,
-        fontFamily: "bold",
+        fontFamily: "bolditalic",
     },
     imagem: {
         width: 300,
         height: 300,
         alignSelf: 'center',
         marginTop: 20,
-        borderRadius: 20
+        borderRadius: 20,
     },
     title: {
-        fontSize: 30,
+        fontSize: 35,
         marginBottom: 20,
         textAlign: 'center',
         fontFamily: "bolditalic",
+        backgroundColor:"#007b",
+        color:"#fff",
+        width:"100%",
+        paddingBottom:5
     },
     item: {
         justifyContent: 'center',
         alignItems: 'center',
+        paddingBottom: 10,
+
     },
     indicatorContainer: {
         flexDirection: 'row',

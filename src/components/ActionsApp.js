@@ -14,6 +14,9 @@ export default function Actions() {
     const estatisticas = () => {
         console.log("Estatísticas");
     };
+    const duplaVencedora = () => {
+        console.log("Pódio");
+    };
     return (
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             <View style={styles.containerItems}>
@@ -32,6 +35,10 @@ export default function Actions() {
                 <TouchableOpacity style={styles.btn} onPress={estatisticas}>
                     <Ionicons name="stats-chart" size={50} color="white" />
                     <Text style={styles.btnName}>Estatísticas</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.btn} onPress={duplaVencedora}>
+                    <Ionicons name="trophy" size={50} color="white" />
+                    <Text style={styles.btnName}>Pódio</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>
