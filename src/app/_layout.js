@@ -1,19 +1,19 @@
 import { Stack } from "expo-router";
 import { AppProvider } from "../hooks";
 import {View, StyleSheet, TouchableOpacity, Linking} from "react-native";
-// import {Ionicons} from "@expo/vector-icons";
-// import {FontAwesome} from "@expo/vector-icons";
+import {Ionicons} from "@expo/vector-icons";
+import {FontAwesome} from "@expo/vector-icons";
 export default function Layout() {
-    // const abrirInstagram = () => {
-    //     Linking.openURL('https://www.instagram.com/beachtennispiquerobi/');
-    // }; 
+    const abrirInstagram = () => {
+        Linking.openURL('https://www.instagram.com/beachtennispiquerobi/');
+    }; 
     return (
         <>
             <AppProvider>
                 <Stack />
             </AppProvider>
             
-            {/* <View style={styles.bar}>
+            <View style={styles.bar}>
                 <TouchableOpacity>
                     <Ionicons name="home" size={30} color="white" />
                 </TouchableOpacity>
@@ -23,7 +23,7 @@ export default function Layout() {
                 <TouchableOpacity>
                     <FontAwesome name="gear" size={30} color="white" />
                 </TouchableOpacity>
-            </View> */}
+            </View>
         </>
 
     );

@@ -2,9 +2,9 @@ import React, { useRef, useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import PagerView from 'react-native-pager-view';
 const items = [
-    { id: 1, title: '2° Open de Beach Tennis A. Maui', image: require('../assets/images/logobt.png') },
-    { id: 2, title: '3° Open de Beach Tennis SUN7', image: require('../assets/images/logo.png') },
-    { id: 3, title: '4° Cumbuca de Beach Piquerobi', image: require('../assets/images/logobeachduo.png') },
+    { id: 1, title: '2° Open de Beach Tennis A. Maui', image: require('../assets/images/logomaui.png') },
+    { id: 2, title: '5° Open de Beach Tennis SUN7', image: require('../assets/images/logosun7.png') },
+    { id: 3, title: '4° Cumbuca de Beach Piquerobi', image: require('../assets/images/logoquadrabtp.jpg') },
 ];
 
 export default function Pager() {
@@ -25,7 +25,7 @@ export default function Pager() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Torneios</Text>
+            <Text style={styles.title}>Torneios de BT</Text>
             <PagerView ref={pagerViewRef} style={styles.pagerView} initialPage={0} onPageSelected={e => setPage(e.nativeEvent.position)}>
                 {items.map(item => (
                     <View key={item.id} style={styles.item}>
