@@ -14,6 +14,7 @@ export default function App() {
                 <TopBar />
                 <Actions />
                 <Pager />
+                <StatusBar style="auto" />
             </ScrollView>
             {/* <View style={{ justifyContent: "center", alignItems: "center" }}>
                 <Text>App funcionando para caralho</Text>
@@ -21,7 +22,6 @@ export default function App() {
                 <Button title="SignIn User" onPress={() => signIn({ email: "user@email.com", password: "User123!" })} />
                 <Button title="SignIn ADM" onPress={() => signIn({ email: "adm@email.com", password: "Adm123!" })} />
                 <Button title="SignOut" onPress={() => signOut()} />
-                <StatusBar style="auto" />
             </View> */}
         </>
     );
