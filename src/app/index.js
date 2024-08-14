@@ -1,29 +1,29 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View, StyleSheet, Button, ScrollView } from "react-native";
+import { Text, View, StyleSheet, Button, ScrollView, BackHandler } from "react-native";
 import { useAuth } from "../hooks/Auth";
-import Actions from "../components/ActionsApp";
-import Pager from "../components/PagerView";
-import TopBar from "../components/TopBar";
+import { router } from "expo-router";
 export default function App() {
-    // const { signIn, signOut } = useAuth();
+    const { signIn, signOut } = useAuth();
+    const handleEntrarSuper = async () => {
+        try {
+            await signIn({ email: "super@email.com", password: "Super123!" })
+            router.replace("/")
+        } catch (error) {
+            console.log(e)
+        }
 
+    }
 
     return (
-        <>
-            <ScrollView style={styles.scrollViewContent}>
-                <TopBar />
-                <Actions />
-                <Pager />
-                <StatusBar style="auto" />
-            </ScrollView>
-            {/* <View style={{ justifyContent: "center", alignItems: "center" }}>
-                <Text>App funcionando para caralho</Text>
-                <Button title="SignIn Super" onPress={() => signIn({ email: "super@email.com", password: "Super123!" })} />
-                <Button title="SignIn User" onPress={() => signIn({ email: "user@email.com", password: "User123!" })} />
-                <Button title="SignIn ADM" onPress={() => signIn({ email: "adm@email.com", password: "Adm123!" })} />
-                <Button title="SignOut" onPress={() => signOut()} />
-            </View> */}
-        </>
+        <View style={{ justifyContent: "center", alignItems: "center", gap: 10 }}>
+            <Text>App funcionando para caralho</Text>
+            <Button title="SignIn Super" onPress={handleEntrarSuper} />
+            <Button title="SignIn User" onPress={() => signIn({ email: "user@email.com", password: "User123!" })} />
+            <Button title="SignIn ADM" onPress={() => signIn({ email: "adm@email.com", password: "Adm123!" })} />
+            <Button title="Sobre" onPress={() => router.replace('/about')} />
+            <Button title='Sair do App' onPress={() => BackHandler.exitApp} />
+            <StatusBar style="auto" />
+        </View>
     );
 }
 
