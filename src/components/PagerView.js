@@ -4,7 +4,7 @@ import PagerView from 'react-native-pager-view';
 const items = [
     { id: 1, title: '2° Open de Beach Tennis A. Maui', image: require('../assets/images/logomaui.png') },
     { id: 2, title: '5° Open de Beach Tennis SUN7', image: require('../assets/images/logosun7.png') },
-    { id: 3, title: '4° Cumbuca de Beach Piquerobi', image: require('../assets/images/logoquadrabtp.jpg') },
+    { id: 3, title: '4° Cumbuca de Beach Piquerobi', image: require('../assets/images/bannersite.png') },
 ];
 export default function Pager() {
     const pagerViewRef = useRef(null);

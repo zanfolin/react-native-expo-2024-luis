@@ -1,5 +1,6 @@
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 export default function TopBar() {
     return (
         <View style={styles.topBar}>
@@ -7,7 +8,7 @@ export default function TopBar() {
                 <Ionicons name="menu" size={35} color="black" style={{ marginLeft: 30 }} />
             </TouchableOpacity>
             <Text style={styles.title}>BeachDuo</Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=> router.push("/perfil")}>
                 <Ionicons name="person" size={35} color="black" style={{ marginRight: 30 }} />
             </TouchableOpacity>
 

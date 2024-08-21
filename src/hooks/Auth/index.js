@@ -20,7 +20,7 @@ export function AuthProvider({ children }) {
             setUser({ autenticated: true, user: { id: 2, name: "Administrador", email }, role: Role.ADM })
         }
         else if (email === "user@email.com" && password === "User123!") {
-            setUser({ autenticated: true, user: { id: 1, name: "Usuário", email }, role: Role.USER })
+            setUser({ autenticated: true, user: { id: 3, name: "Usuário", email }, role: Role.USER })
         }
         else {
             setUser({

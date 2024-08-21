@@ -1,44 +1,31 @@
 import { View, TouchableOpacity, Text, StyleSheet, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-
+import { useAuth } from "../hooks/Auth";
+import { router } from "expo-router";
 export default function Actions() {
-    const addDupla = () => {
-        console.log("Adicionar dupla");
-    };
-    const listaDuplas = () => {
-        console.log("Lista de duplas");
-    };
-    const procurarDuplas = () => {
-        console.log("Procurar duplas");
-    };
-    const estatisticas = () => {
-        console.log("Estatísticas");
-    };
-    const duplaVencedora = () => {
-        console.log("Pódio");
-    };
+    const { signOut } = useAuth();
     return (
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             <View style={styles.containerItems}>
-                <TouchableOpacity style={styles.btn} onPress={addDupla}>
+                <TouchableOpacity style={styles.btn} onPress={() => router.push('/addDupla')}>
                     <Ionicons name="add" size={50} color="white" />
                     <Text style={styles.btnName}>Adicionar Dupla</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btn} onPress={listaDuplas}>
+                <TouchableOpacity style={styles.btn} onPress={()=> router.push("/listaDuplas")}>
                     <Ionicons name="people" size={50} color="white" />
                     <Text style={styles.btnName}>Lista de Duplas</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btn} onPress={procurarDuplas}>
+                <TouchableOpacity style={styles.btn} onPress={()=> router.push("/procurarDuplas")}>
                     <Ionicons name="search" size={50} color="white" />
                     <Text style={styles.btnName}>Procurar Duplas</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btn} onPress={estatisticas}>
-                    <Ionicons name="stats-chart" size={50} color="white" />
-                    <Text style={styles.btnName}>Estatísticas</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.btn} onPress={duplaVencedora}>
+                <TouchableOpacity style={styles.btn} onPress={()=> router.push("/podio")}>
                     <Ionicons name="trophy" size={50} color="white" />
                     <Text style={styles.btnName}>Pódio</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.btn} onPress={()=> signOut()}>
+                    <Ionicons name="exit-outline" size={50} color="white" />
+                    <Text style={styles.btnName}>Sair da conta</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>
