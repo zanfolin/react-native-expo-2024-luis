@@ -6,28 +6,24 @@ export default function App() {
     const { signIn } = useAuth();
     const handleEntrarSuper = async () => {
         try {
-            await signIn({ email: "super@email.com", password: "Super123!" })
-            router.replace("/")
+            await signIn({ username: "super", senha: "12345678" })
         } catch (error) {
-            console.log(e)
+            console.log(error)
         }
-
     }
     const handleEntrarUser = async () => {
         try {
-            await signIn({ email: "user@email.com", password: "User123!" })
-            router.replace("/")
+            await signIn({ username: "user", senha: "12345678" })
         } catch (error) {
-            console.log(e)
+            console.log(error)
         }
 
     }
     const handleEntrarADM = async () => {
         try {
-            await signIn({ email: "adm@email.com", password: "Adm123!" })
-            router.replace("/")
+            await signIn({ username: "admin", senha: "12345678" })
         } catch (error) {
-            console.log(e)
+            console.log(error)
         }
 
     }
