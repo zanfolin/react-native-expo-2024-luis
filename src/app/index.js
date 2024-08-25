@@ -1,44 +1,139 @@
-import { StatusBar } from "react-native";
-import { Text, View, StyleSheet, ScrollView, Button, BackHandler } from "react-native";
-import { useAuth } from "../hooks/Auth";
-import { router } from "expo-router";
+import React, { useState } from 'react';
+import { Alert, StatusBar, TextInput, TouchableOpacity, StyleSheet, Text, View, BackHandler } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import Feather from '@expo/vector-icons/Feather';
+import { useAuth } from '../hooks/Auth';
+import { router } from 'expo-router';
+
 export default function App() {
     const { signIn } = useAuth();
-    const handleEntrarSuper = async () => {
-        try {
-            await signIn({ username: "super", senha: "12345678" })
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    const handleEntrarUser = async () => {
-        try {
-            await signIn({ username: "user", senha: "12345678" })
-        } catch (error) {
-            console.log(error)
-        }
+    const [username, setUsername] = useState('super');
+    const [senha, setSenha] = useState('12345678');
+    const [passwordVisibility, setPasswordVisibility] = useState(false);
 
-    }
-    const handleEntrarADM = async () => {
-        try {
-            await signIn({ username: "admin", senha: "12345678" })
-        } catch (error) {
-            console.log(error)
-        }
+    const togglePasswordVisibility = () => {
+        setPasswordVisibility(!passwordVisibility);
+    };
 
-    }
+    const handleLogin = async () => {
+        try {
+            await signIn({ username, senha });
+            router.replace('/');
+        } catch (error) {
+            Alert.alert('Erro', error.message);
+            console.log(error);
+        }
+    };
 
     return (
-        <View style={{ marginTop: 100, justifyContent: "center", alignItems: "center", gap: 10 }}>
-            <Text style={{ fontFamily: 'regular', fontSize: 25 }}>App funcionando para caralho</Text>
-            <Button title="SignIn Super" onPress={handleEntrarSuper} />
-            <Button title="SignIn User" onPress={handleEntrarUser} />
-            <Button title="SignIn ADM" onPress={handleEntrarADM} />
-            <Button title="Sobre" onPress={() => router.push('/about')} />
-            <Button title='Sair do App' onPress={() => BackHandler.exitApp()} />
+        <View style={styles.container}>
             <StatusBar style="auto" />
+            <Text style={styles.title}>Bem-vindo ao App!</Text>
+            <Text style={styles.subtitle}>Faça login para continuar</Text>
+            <View style={styles.inputContainer}>
+                <Feather name="user" size={24} color="#ffa500" />
+                <TextInput
+                    placeholder="Email"
+                    onChangeText={setUsername}
+                    value={username}
+                    style={styles.input}
+                />
+            </View>
+            <View style={styles.inputContainer}>
+                <Ionicons name="lock-closed-outline" size={24} color="#ffa500" />
+                <TextInput
+                    placeholder="Senha"
+                    onChangeText={setSenha}
+                    value={senha}
+                    style={styles.input}
+                    secureTextEntry={passwordVisibility}
+                />
+                <Ionicons
+                    name={passwordVisibility ? 'eye' : 'eye-off-outline'}
+                    size={24}
+                    color="#ffa500"
+                    onPress={togglePasswordVisibility}
+                />
+            </View>
+            <TouchableOpacity onPress={handleLogin} style={styles.button}>
+                <Text style={styles.buttonText}>Entrar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => router.push('/about')} style={styles.link}>
+                <Text style={styles.linkText}>Sobre</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => BackHandler.exitApp()} style={styles.link}>
+                <Text style={styles.linkText}>Fechar APP</Text>
+            </TouchableOpacity>
         </View>
-
-
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#f4f4f9',
+        padding: 20,
+    },
+    title: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        color: '#333',
+        marginBottom: 10,
+    },
+    subtitle: {
+        fontSize: 18,
+        color: '#666',
+        marginBottom: 30,
+        textAlign: 'center',
+    },
+    inputContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+        borderRadius: 25,
+        marginBottom: 15,
+        paddingHorizontal: 15,
+        width: '100%',
+        shadowColor: '#ccc',
+        shadowOffset: { width: 0, height: 6 },
+        shadowOpacity: 0.2,
+        shadowRadius: 8,
+        elevation: 5,
+    },
+    input: {
+        flex: 1,
+        height: 50,
+        marginLeft: 10,
+        fontSize: 16,
+        color: '#333',
+    },
+    button: {
+        backgroundColor: '#ffa500',
+        borderRadius: 25,
+        paddingVertical: 15,
+        paddingHorizontal: 30,
+        marginTop: 20,
+        alignItems: 'center',
+        width: '100%',
+        shadowColor: '#e67e22',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 10,
+        elevation: 5,
+    },
+    buttonText: {
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    link: {
+        marginTop: 10,
+    },
+    linkText: {
+        fontSize: 16,
+        color: '#ffa500',
+        textDecorationLine: 'underline',
+    },
+});

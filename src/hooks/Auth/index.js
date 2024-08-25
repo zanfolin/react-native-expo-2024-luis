@@ -20,7 +20,8 @@ export function AuthProvider({ children }) {
                 autenticated: false,
                 user: null,
                 role: null,
-            })
+            });
+            throw new Error("Usuário ou senha inválidos");
         } else {
             setUser({
                 autenticated: true,
