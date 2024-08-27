@@ -3,7 +3,6 @@ import { Drawer } from 'expo-router/drawer';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
-import { useState } from 'react';
 const DrawerLayout = () => {
   return (
     <>
@@ -11,14 +10,14 @@ const DrawerLayout = () => {
         <Drawer />
       </GestureHandlerRootView>
       <View style={styles.container}>
-        <TouchableOpacity onPress={() => router.back("/")}>
+        <TouchableOpacity onPress={() => router.navigate("/")}>
           <Ionicons name="home" size={35} color="black" />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => router.push("/(protected)/listaDuplas")}>
           <Ionicons name="list" size={35} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push("/(protected)/procurarDuplas")}>
-          <Ionicons name="search" size={35} color="black" />
+        <TouchableOpacity onPress={() => router.push("/(protected)/podio")}>
+          <Ionicons name="trophy" size={35} color="black" />
         </TouchableOpacity>
       </View>
     </>
@@ -40,12 +39,10 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 20,
     left: 40,
-    // Sombra para iOS
-    shadowColor: "#000", // Cor da sombra
-    shadowOffset: { width: 0, height: 4 }, // Offset da sombra
-    shadowOpacity: 0.3, // Opacidade da sombra
-    shadowRadius: 6, // Raio da sombra
-    // Sombra para Android
-    elevation: 8, // Elevação da sombra
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 6,
+    elevation: 8,
   },
 });

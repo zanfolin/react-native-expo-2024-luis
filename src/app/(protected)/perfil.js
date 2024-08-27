@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native';
-import { Ionicons, FontAwesome } from '@expo/vector-icons'; // Biblioteca de ícones
+import { Ionicons } from '@expo/vector-icons'; // Biblioteca de ícones
 import { router } from 'expo-router';
-import {useAuth} from "../../hooks/Auth";
+import { useAuth } from "../../hooks/Auth";
 export default function Perfil() {
-    const {signOut} = useAuth();
+    const { signOut } = useAuth();
     return (
         <ScrollView style={styles.container}>
             {/* Cabeçalho */}
@@ -18,17 +18,15 @@ export default function Perfil() {
                 </TouchableOpacity>
             </View>
 
-            {/* Seção de Perfil */}
             <View style={styles.profileSection}>
-                <Image 
-                    source={'../../assets/images/bannersite.png' } 
-                    style={styles.profileImage} 
+                <Image
+                    source={'../../assets/images/bannersite.png'}
+                    style={styles.profileImage}
                 />
-                <Text style={styles.userName}>Nome do usuário</Text>
+                <Text style={styles.userName}>UserName</Text>
                 <Text style={styles.userBio}>Aqui vai uma bio curta sobre o usuário.</Text>
             </View>
 
-            {/* Estatísticas do Usuário */}
             <View style={styles.statsSection}>
                 <View style={styles.statItem}>
                     <Text style={styles.statNumber}>12</Text>
@@ -44,18 +42,8 @@ export default function Perfil() {
                 </View>
             </View>
 
-            {/* Botões de Ação */}
             <View style={styles.actionsSection}>
-                <TouchableOpacity style={styles.actionButton} onPress={() => { /* Ação para editar perfil */ }}>
-                    <FontAwesome name="edit" size={20} color="#fff" />
-                    <Text style={styles.actionButtonText}>Editar Perfil</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.actionButton} onPress={() => { /* Ação para ver duplas */ }}>
-                    <FontAwesome name="users" size={20} color="#fff" />
-                    <Text style={styles.actionButtonText}>Minhas Duplas</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.actionButton} onPress={() => {signOut(); console.log("saiu");}}>
+                <TouchableOpacity style={styles.actionButton} onPress={() => { signOut() }}>
                     <Ionicons name="exit-outline" size={20} color="#fff" />
                     <Text style={styles.actionButtonText}>Sair da Conta</Text>
                 </TouchableOpacity>

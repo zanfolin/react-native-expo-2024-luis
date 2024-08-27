@@ -11,19 +11,15 @@ export default function Actions() {
                     <Ionicons name="add" size={50} color="white" />
                     <Text style={styles.btnName}>Adicionar Dupla</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btn} onPress={()=> router.push("/listaDuplas")}>
+                <TouchableOpacity style={styles.btn} onPress={() => router.push("/listaDuplas")}>
                     <Ionicons name="people" size={50} color="white" />
                     <Text style={styles.btnName}>Lista de Duplas</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btn} onPress={()=> router.push("/procurarDuplas")}>
-                    <Ionicons name="search" size={50} color="white" />
-                    <Text style={styles.btnName}>Procurar Duplas</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.btn} onPress={()=> router.push("/podio")}>
+                <TouchableOpacity style={styles.btn} onPress={() => router.push("/podio")}>
                     <Ionicons name="trophy" size={50} color="white" />
                     <Text style={styles.btnName}>Pódio</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btn} onPress={()=> signOut()}>
+                <TouchableOpacity style={styles.btn} onPress={() => signOut()}>
                     <Ionicons name="exit-outline" size={50} color="white" />
                     <Text style={styles.btnName}>Sair da conta</Text>
                 </TouchableOpacity>

@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { Alert, StatusBar, TextInput, TouchableOpacity, StyleSheet, Text, View, BackHandler } from 'react-native';
+import { Alert, StatusBar, TextInput, TouchableOpacity, StyleSheet, Text, View, BackHandler, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Feather from '@expo/vector-icons/Feather';
 import { useAuth } from '../hooks/Auth';
 import { router } from 'expo-router';
+import logo from "../assets/images/logobeachduo.png"
 
 export default function App() {
     const { signIn } = useAuth();
     const [username, setUsername] = useState('super');
     const [senha, setSenha] = useState('12345678');
-    const [passwordVisibility, setPasswordVisibility] = useState(false);
+    const [passwordVisibility, setPasswordVisibility] = useState(true);
 
     const togglePasswordVisibility = () => {
         setPasswordVisibility(!passwordVisibility);
@@ -28,7 +29,8 @@ export default function App() {
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
-            <Text style={styles.title}>Bem-vindo ao App!</Text>
+            <Image source={logo} style={{ width: 400, height: 400, marginBottom:-50}} />
+            <Text style={styles.title}>BeachDuo</Text>
             <Text style={styles.subtitle}>Faça login para continuar</Text>
             <View style={styles.inputContainer}>
                 <Feather name="user" size={24} color="#ffa500" />
@@ -40,7 +42,7 @@ export default function App() {
                 />
             </View>
             <View style={styles.inputContainer}>
-                <Ionicons name="lock-closed-outline" size={24} color="#ffa500" />
+                <Ionicons name={passwordVisibility ? "lock-closed-outline" : "lock-open-outline"} size={24} color="#ffa500"  />
                 <TextInput
                     placeholder="Senha"
                     onChangeText={setSenha}
@@ -78,12 +80,13 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 30,
-        fontWeight: 'bold',
+        fontFamily:"bolditalic",
         color: '#333',
         marginBottom: 10,
     },
     subtitle: {
         fontSize: 18,
+        fontFamily:"semibold",
         color: '#666',
         marginBottom: 30,
         textAlign: 'center',
@@ -107,6 +110,7 @@ const styles = StyleSheet.create({
         height: 50,
         marginLeft: 10,
         fontSize: 16,
+        fontFamily:"regular",
         color: '#333',
     },
     button: {
@@ -125,14 +129,15 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: '#fff',
-        fontSize: 18,
-        fontWeight: 'bold',
+        fontSize: 26,
+        fontFamily:"semibold",
     },
     link: {
         marginTop: 10,
     },
     linkText: {
-        fontSize: 16,
+        fontFamily:"semibold",
+        fontSize: 20,
         color: '#ffa500',
         textDecorationLine: 'underline',
     },
