@@ -36,9 +36,6 @@ export function AuthProvider({ children }) {
         };
         loadStoragedData();
     }, []);
-    useEffect(() => {
-        console.log("AuthProvider: ", user)
-    }, [user]);
     const signIn = async ({ username, senha }) => {
         const response = await authUser({ username, senha });
         if (!response) {
@@ -64,10 +61,6 @@ export function AuthProvider({ children }) {
             role: null,
         })
     };
-
-    useEffect(() => {
-        console.log("AuthProvider: ", user)
-    }, [user]);
     if (user?.autenticated === null) {
         return (
             <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
