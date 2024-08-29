@@ -1,20 +1,38 @@
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { router } from "expo-router";
+import { useState, useEffect } from "react";
+import { useNavigation } from '@react-navigation/native';
+import { useDrawerStatus } from '@react-navigation/drawer';
+import { useRouter } from "expo-router";
+
 export default function TopBar() {
+    const navigation = useNavigation();
+    const router = useRouter();
+    const [icone, setIcone] = useState("menu");
+    
+    const isDrawerOpen = useDrawerStatus() === 'open';
+
+    useEffect(() => {
+        if (isDrawerOpen) {
+            setIcone("close");
+        } else {
+            setIcone("menu");
+        }
+    }, [isDrawerOpen]);
+
     return (
         <View style={styles.topBar}>
-            <TouchableOpacity>
-                <Ionicons name="menu" size={35} color="black" style={{ marginLeft: 30 }} />
+            <TouchableOpacity onPress={() => navigation.openDrawer()}>
+                <Ionicons name={icone} size={35} color="#000" style={styles.Icon} />
             </TouchableOpacity>
             <Text style={styles.title}>BeachDuo</Text>
-            <TouchableOpacity onPress={()=> router.push("/perfil")}>
+            <TouchableOpacity onPress={() => router.push("/perfil")}>
                 <Ionicons name="person" size={35} color="black" style={{ marginRight: 30 }} />
             </TouchableOpacity>
-
         </View>
     );
 }
+
 const styles = StyleSheet.create({
     topBar: {
         width: "100%",
@@ -28,5 +46,8 @@ const styles = StyleSheet.create({
         fontSize: 35,
         fontFamily: "bolditalic",
         color: "black",
-    }
+    },
+    Icon: {
+        marginLeft: 30,
+    },
 });

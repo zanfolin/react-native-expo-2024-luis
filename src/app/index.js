@@ -4,7 +4,8 @@ import { Ionicons } from '@expo/vector-icons';
 import Feather from '@expo/vector-icons/Feather';
 import { useAuth } from '../hooks/Auth';
 import { router } from 'expo-router';
-import logo from "../assets/images/logobeachduo.png"
+import logo from "../assets/images/logobeachduo.png";
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 export default function App() {
     const { signIn } = useAuth();
@@ -29,7 +30,7 @@ export default function App() {
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
-            <Image source={logo} style={{ width: 400, height: 400, marginBottom:-50}} />
+            <Image source={logo} style={{ width: 350, height: 350, marginBottom: -50 }} />
             <Text style={styles.title}>BeachDuo</Text>
             <Text style={styles.subtitle}>Faça login para continuar</Text>
             <View style={styles.inputContainer}>
@@ -42,7 +43,7 @@ export default function App() {
                 />
             </View>
             <View style={styles.inputContainer}>
-                <Ionicons name={passwordVisibility ? "lock-closed-outline" : "lock-open-outline"} size={24} color="#ffa500"  />
+                <Ionicons name={passwordVisibility ? "lock-closed-outline" : "lock-open-outline"} size={24} color="#ffa500" />
                 <TextInput
                     placeholder="Senha"
                     onChangeText={setSenha}
@@ -59,6 +60,7 @@ export default function App() {
             </View>
             <TouchableOpacity onPress={handleLogin} style={styles.button}>
                 <Text style={styles.buttonText}>Entrar</Text>
+                <MaterialCommunityIcons name="login-variant" size={24} color="#fff" style={styles.iconLogin} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => router.push('/about')} style={styles.link}>
                 <Text style={styles.linkText}>Sobre</Text>
@@ -80,13 +82,13 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 30,
-        fontFamily:"bolditalic",
+        fontFamily: "bolditalic",
         color: '#333',
         marginBottom: 10,
     },
     subtitle: {
         fontSize: 18,
-        fontFamily:"semibold",
+        fontFamily: "semibold",
         color: '#666',
         marginBottom: 30,
         textAlign: 'center',
@@ -110,7 +112,7 @@ const styles = StyleSheet.create({
         height: 50,
         marginLeft: 10,
         fontSize: 16,
-        fontFamily:"regular",
+        fontFamily: "regular",
         color: '#333',
     },
     button: {
@@ -126,19 +128,27 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 10,
         elevation: 5,
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+        flexDirection:"row",
     },
     buttonText: {
         color: '#fff',
         fontSize: 26,
-        fontFamily:"semibold",
+        fontFamily: "semibold",
     },
     link: {
         marginTop: 10,
     },
     linkText: {
-        fontFamily:"semibold",
+        fontFamily: "semibold",
         fontSize: 20,
         color: '#ffa500',
         textDecorationLine: 'underline',
     },
+    iconLogin: {
+        marginLeft: 10,
+        marginTop: 10,
+    }
 });

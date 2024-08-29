@@ -1,5 +1,7 @@
 import { createContext, useEffect, useState, useContext } from "react";
 import { useUsersDatabase } from "../../database/useUsersDatabase";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {View, Text, ActivityIndicator} from "react-native";
 const AuthContext = createContext({});
 export const Role = {
     SUPER: "SUPER",
@@ -8,11 +10,35 @@ export const Role = {
 }
 export function AuthProvider({ children }) {
     const [user, setUser] = useState({
-        autenticated: false,
+        autenticated: null,
         user: null,
         role: null,
     });
     const { authUser } = useUsersDatabase();
+
+    useEffect(() => {
+        const loadStoragedData = async () => {
+            const storagedUser = await AsyncStorage.getItem("@duplas:user");
+            if (storagedUser) {
+                setUser({
+                    autenticated: true,
+                    user: JSON.parse(storagedUser),
+                    role: JSON.parse(storagedUser).role,
+                });
+            }
+            else {
+                setUser({
+                    autenticated: false,
+                    user: null,
+                    role: null,
+                });
+            }
+        };
+        loadStoragedData();
+    }, []);
+    useEffect(() => {
+        console.log("AuthProvider: ", user)
+    }, [user]);
     const signIn = async ({ username, senha }) => {
         const response = await authUser({ username, senha });
         if (!response) {
@@ -22,15 +48,16 @@ export function AuthProvider({ children }) {
                 role: null,
             });
             throw new Error("Usuário ou senha inválidos");
-        } else {
-            setUser({
-                autenticated: true,
-                user: response,
-                role: response.role,
-            });
         }
+        await AsyncStorage.setItem("@duplas:user", JSON.stringify(response));
+        setUser({
+            autenticated: true,
+            user: response,
+            role: response.role,
+        });
     };
     const signOut = async () => {
+        await AsyncStorage.removeItem("@duplas:user");
         setUser({
             autenticated: false,
             user: null,
@@ -41,7 +68,14 @@ export function AuthProvider({ children }) {
     useEffect(() => {
         console.log("AuthProvider: ", user)
     }, [user]);
-
+    if (user?.autenticated === null) {
+        return (
+            <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+                <Text style={{ fontSize:28, marginBottom:15 }}>Carregando Dados do Usuário...</Text>
+                <ActivityIndicator size="large" color="#ffc500" />
+            </View>
+        )
+    }
     return (
         <AuthContext.Provider value={{ user, signIn, signOut }}>
             {children}
