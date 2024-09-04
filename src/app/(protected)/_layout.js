@@ -1,28 +1,71 @@
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Text, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { router } from 'expo-router';
-const DrawerLayout = () => {
+import { useAuth } from '../../hooks/Auth/index';
+import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
+
+function CostumDrawerContent(props) {
+  const { user, signOut } = useAuth();
   return (
-    <>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <Drawer />
-      </GestureHandlerRootView>
-      <View style={styles.container}>
-        <TouchableOpacity onPress={() => router.navigate("/")}>
-          <Ionicons name="home" size={35} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push("/(protected)/listaDuplas")}>
-          <Ionicons name="list" size={35} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push("/(protected)/podio")}>
-          <Ionicons name="trophy" size={35} color="black" />
-        </TouchableOpacity>
+    <View style={{ flex: 1 }}>
+      <View>
+        <Image source={require("../../assets/images/logobeachduo.png")} style={{ width: 200, height: 200, alignSelf: "center", marginTop: 10, marginBottom: -30 }} />
       </View>
-    </>
+      <View>
+        <Text style={{ fontSize: 20, textAlign: "center", fontFamily: "bold" }}>{user.user?.username || "Faça login"}</Text>
+      </View>
+      <DrawerContentScrollView {...props}>
+        <DrawerItemList {...props} />
+      </DrawerContentScrollView>
+      <TouchableOpacity onPress={() => signOut()} style={{ justifyContent: "center", alignItems: "center", height: 50, backgroundColor: "#007bff", margin: 10, borderRadius: 10 }}>
+        <Text style={{ color: "#fff", fontFamily: "regular" }}>LogOut</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
+
+const DrawerLayout = () => {
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Drawer drawerContent={(props) => <CostumDrawerContent {...props} />}>
+        <Drawer.Screen 
+          name="index" 
+          options={{ 
+            drawerLabel: "Início", 
+            drawerIcon: () => <Ionicons name="home" size={35} color="#000" />,
+            headerShown: false, // Oculta o header
+          }} 
+        />
+        <Drawer.Screen 
+          name="addDupla" 
+          options={{ 
+            drawerLabel: "Adicionar Duplas", 
+            drawerIcon: () => <Ionicons name="add-circle" size={35} color="#000" />,
+            headerShown: false, // Oculta o header
+          }} 
+        />
+        <Drawer.Screen 
+          name="listaDuplas" 
+          options={{ 
+            drawerLabel: "Duplas", 
+            drawerIcon: () => <Ionicons name="list" size={35} color="#000" />,
+            headerShown: false, // Oculta o header
+          }} 
+        />
+        <Drawer.Screen 
+          name="perfil" 
+          options={{ 
+            drawerLabel: "Perfil", 
+            drawerIcon: () => <Ionicons name="person" size={35} color="#000" />,
+            headerShown: false, // Oculta o header
+          }} 
+        />
+      </Drawer>
+    </GestureHandlerRootView>
+  );
+};
+
 export default function Layout() {
   return DrawerLayout();
 }

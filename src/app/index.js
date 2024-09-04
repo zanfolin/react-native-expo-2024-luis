@@ -36,7 +36,7 @@ export default function App() {
             <View style={styles.inputContainer}>
                 <Feather name="user" size={24} color="#ffa500" />
                 <TextInput
-                    placeholder="Email"
+                    placeholder="Username"
                     onChangeText={setUsername}
                     value={username}
                     style={styles.input}

@@ -1,17 +1,17 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import PagerView from 'react-native-pager-view';
+
 const items = [
-    { id: 1, title: '2° Open de Beach Tennis A. Maui', image: require('../assets/images/logomaui.png') },
+    { id: 1, title: '2° Open de Beach Tennis A. Maui', image:require('../assets/images/logomaui.png') },
     { id: 2, title: '5° Open de Beach Tennis SUN7', image: require('../assets/images/logosun7.png') },
     { id: 3, title: '4° Cumbuca de Beach Piquerobi', image: require('../assets/images/bannersite.png') },
-    { id: 4, title: '5° Cumbuca de Beach Piquerobi', image: require('../assets/images/bannersite.png') },
-    { id: 5, title: '6° Cumbuca de Beach Piquerobi', image: require('../assets/images/bannersite.png') },
 ];
+
 export default function Pager() {
     const pagerViewRef = useRef(null);
     const [page, setPage] = useState(0);
-
+-
     useEffect(() => {
         const interval = setInterval(() => {
             setPage(prevPage => {
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         color: 'black',
         textAlign: 'center',
         marginTop: 20,
-        fontFamily: "bolditalic",
+        fontFamily: "italic",
     },
     imagem: {
         width: 300,
@@ -74,10 +74,10 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         textAlign: 'center',
         fontFamily: "bolditalic",
-        backgroundColor:"#007b",
-        color:"#fff",
-        width:"100%",
-        paddingBottom:5
+        backgroundColor: "#007b",
+        color: "#fff",
+        width: "100%",
+        paddingBottom: 5
     },
     item: {
         justifyContent: 'center',

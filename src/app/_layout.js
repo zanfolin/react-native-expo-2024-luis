@@ -20,7 +20,10 @@ const StackLayout = () => {
             router.push('(protected)')
         } else {
             if (router.canGoBack()) {
-                router.back();
+                router.replace("/");
+                if (router.canGoBack()) {
+                    router.back();
+                }
             } else {
                 router.replace("/");
             }

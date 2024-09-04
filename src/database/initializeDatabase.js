@@ -12,7 +12,7 @@ export async function initializeDatabase(database) {
             updated_at DATE
         );
 
-        INSERT OR REPLACE INTO users (username, senha, role) VALUES ('admin', '12345678', 'ADMIN');
+        INSERT OR REPLACE INTO users (username, senha, role) VALUES ('smithfodao', '12345678', 'ADMIN');
         INSERT OR REPLACE INTO users (username, senha, role) VALUES ('user', '12345678', 'USER');
         INSERT OR REPLACE INTO users (username, senha, role) VALUES ('super', '12345678', 'SUPER');
         `);

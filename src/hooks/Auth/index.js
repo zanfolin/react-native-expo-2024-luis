@@ -2,6 +2,7 @@ import { createContext, useEffect, useState, useContext } from "react";
 import { useUsersDatabase } from "../../database/useUsersDatabase";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {View, Text, ActivityIndicator} from "react-native";
+import { router } from "expo-router";
 const AuthContext = createContext({});
 export const Role = {
     SUPER: "SUPER",
@@ -55,6 +56,7 @@ export function AuthProvider({ children }) {
     };
     const signOut = async () => {
         await AsyncStorage.removeItem("@duplas:user");
+        router.back("/");
         setUser({
             autenticated: false,
             user: null,

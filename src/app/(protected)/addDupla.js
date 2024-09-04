@@ -1,71 +1,126 @@
-import { View, Text, StyleSheet, TextInput } from 'react-native';
-import {useState} from 'react';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { useState } from 'react';
 import { router } from 'expo-router';
+import TopBar from '../../components/TopBar';
+import Constants from 'expo-constants';
+
 export default function AddDupla() {
     const [nome01, setNome01] = useState("Participante 01");
     const [nome02, setNome02] = useState("Participante 02");
+    const statusBarHeight = Constants.statusBarHeight;
     return (
-        <View style={{ flex: 1, justifyContent:"center", alignItems:"center" }}>
-            <View style={styles.containerAdd}>
-                <TextInput onChangeText={setNome01} placeholder='entre com o nome aqui' style={styles.input} />
-                <TextInput onChangeText={setNome02} placeholder='entre com o nome aqui' style={styles.input} />
-                <TouchableOpacity style={styles.addDouble}>
-                    <Text style={{color:"#fff"}}>Adicionar Dupla</Text>
-                </TouchableOpacity>
-                <View style={styles.dupla}>
-                    <Text style={styles.name}>{nome01}</Text>
-                    <Text style={styles.name}>{nome02}</Text>
+        <View style={styles.cont}>
+            <TopBar />
+            <View style={styles.container}>
+                <View style={styles.formContainer}>
+                    <Text style={styles.title}>Adicionar Duplas</Text>
+                    <TextInput
+                        onChangeText={setNome01}
+                        placeholder='Digite o nome aqui'
+                        style={styles.input}
+                        value={nome01}
+                    />
+                    <TextInput
+                        onChangeText={setNome02}
+                        placeholder='Digite o nome aqui'
+                        style={styles.input}
+                        value={nome02}
+                    />
+                    <TouchableOpacity style={styles.addButton}>
+                        <Text style={styles.buttonText}>Adicionar Dupla</Text>
+                    </TouchableOpacity>
+                    <View style={styles.duplaContainer}>
+                        <Text style={styles.name}>{nome01}</Text>
+                        <Text style={styles.name}>{nome02}</Text>
+                    </View>
                 </View>
+                <TouchableOpacity onPress={() => router.back("/")} style={styles.backButton}>
+                    <Text style={styles.buttonText}>Voltar</Text>
+                </TouchableOpacity>
             </View>
-            <TouchableOpacity onPress={()=> router.back("/")} style={styles.voltar}>
-                <Text>Voltar</Text>
-            </TouchableOpacity>
         </View>
+
     );
 }
+
 const styles = StyleSheet.create({
-    containerAdd: {
-        width: "90%",
-        height: "90%",
-        backgroundColor: "#fff",
-        borderRadius: 10,
+    cont:{
+        flex: 1,
+        backgroundColor: '#ffa',
+        paddingTop: Constants.statusBarHeight+5
+    },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#ffa',
         padding: 20,
-        justifyContent: "center",
-        alignItems: "center",
+        paddingTop: Constants.statusBarHeight+5
+    },
+    formContainer: {
+        width: '100%',
+        maxWidth: 360,
+        backgroundColor: '#ffffff',
+        borderRadius: 12,
+        padding: 20,
+        elevation: 4,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 8,
+        alignItems: 'center',
+    },
+    title: {
+        fontSize: 26,
+        fontWeight: '700',
+        color: '#333',
+        marginBottom: 20,
     },
     input: {
-        width: "100%",
+        width: '100%',
         borderWidth: 1,
-        borderColor: "#ccc",
-        borderRadius: 5,
-        padding: 10,
-        marginVertical: 10,
+        borderColor: '#d0d0d0',
+        borderRadius: 8,
+        padding: 12,
+        marginVertical: 12,
+        fontSize: 16,
+        backgroundColor: '#fafafa',
     },
-    dupla: {
-        width: "100%",
-        height: 200,
-        backgroundColor: "#ccc",
-        borderRadius: 5,
-        display:"flex",
-        justifyContent:"center",
-        alignItems:"center",
+    duplaContainer: {
+        width: '100%',
+        backgroundColor: '#f9f9f9',
+        borderRadius: 8,
+        padding: 15,
+        marginVertical: 20,
+        alignItems: 'center',
+        borderColor: '#ddd',
+        borderWidth: 1,
     },
     name: {
         fontSize: 20,
-        fontFamily: "regular",
-        marginVertical: 10,
+        fontWeight: '500',
+        color: '#333',
+        marginVertical: 8,
     },
-    voltar: {
-        backgroundColor: "#ffa500",
-        padding: 10,
-        borderRadius: 5,
+    backButton: {
+        backgroundColor: '#ff6f61',
+        paddingVertical: 12,
+        paddingHorizontal: 24,
+        borderRadius: 8,
         marginTop: 20,
+        alignItems: 'center',
     },
-    addDouble: {
-        backgroundColor: "#007b",
-        padding: 10,
-        borderRadius: 5,
+    addButton: {
+        backgroundColor: '#4caf50',
+        paddingVertical: 12,
+        paddingHorizontal: 24,
+        borderRadius: 8,
         marginTop: 20,
-    }
+        alignItems: 'center',
+    },
+    buttonText: {
+        color: '#ffffff',
+        fontSize: 16,
+        fontWeight: '600',
+    },
 });
