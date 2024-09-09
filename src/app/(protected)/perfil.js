@@ -24,22 +24,6 @@ export default function Perfil() {
                 <Image source={avatar} style={styles.profileImage} />
                 <Text style={styles.userName}>{user.user?.username || "Fora de Login"}</Text>
             </View>
-
-            <View style={styles.statsSection}>
-                <View style={styles.statItem}>
-                    <Text style={styles.statNumber}>12</Text>
-                    <Text style={styles.statLabel}>Duplas</Text>
-                </View>
-                <View style={styles.statItem}>
-                    <Text style={styles.statNumber}>34</Text>
-                    <Text style={styles.statLabel}>Jogos</Text>
-                </View>
-                <View style={styles.statItem}>
-                    <Text style={styles.statNumber}>56</Text>
-                    <Text style={styles.statLabel}>Vitórias</Text>
-                </View>
-            </View>
-
             <View style={styles.actionsSection}>
                 <TouchableOpacity style={styles.actionButton} onPress={() => { signOut() }}>
                     <Ionicons name="exit-outline" size={20} color="#fff" />
@@ -73,7 +57,7 @@ const styles = StyleSheet.create({
     profileSection: {
         alignItems: 'center',
         padding: 20,
-        backgroundColor: '#eccb88',
+        backgroundColor: '#ffa500',
         marginBottom: 10,
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
@@ -91,26 +75,6 @@ const styles = StyleSheet.create({
         fontFamily: 'bold',
         fontSize: 24,
         color: '#fff ',
-    },
-    statsSection: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        paddingVertical: 15,
-        backgroundColor: '#eccb88',
-        marginBottom: 10,
-    },
-    statItem: {
-        alignItems: 'center',
-    },
-    statNumber: {
-        fontSize: 22,
-        fontFamily: 'semibold',
-        color: '#fff',
-    },
-    statLabel: {
-        fontSize: 14,
-        color: '#666',
-        fontFamily: 'semibold',
     },
     actionsSection: {
         padding: 20,

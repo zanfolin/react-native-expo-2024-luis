@@ -1,3 +1,4 @@
+
 import React, { useRef, useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import PagerView from 'react-native-pager-view';
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
         color: 'black',
         textAlign: 'center',
         marginTop: 20,
-        fontFamily: "italic",
+        fontFamily: "bolditalic",
     },
     imagem: {
         width: 300,
@@ -102,3 +103,5 @@ const styles = StyleSheet.create({
         backgroundColor: '#000',
     },
 });
+
+
