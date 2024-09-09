@@ -1,6 +1,9 @@
 export async function initializeDatabase(database) {
     try {
         await database.execAsync(`
+        DROP TABLE IF EXISTS duplas;
+
+
         DROP TABLE IF EXISTS users;
         
         CREATE TABLE IF NOT EXISTS users (
@@ -12,7 +15,16 @@ export async function initializeDatabase(database) {
             updated_at DATE
         );
 
-        INSERT OR REPLACE INTO users (username, senha, role) VALUES ('smithfodao', '12345678', 'ADMIN');
+        CREATE TABLE IF NOT EXISTS duplas (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_cadastro INTEGER NOT NULL,
+            jogadorOne TEXT NOT NULL,
+            jogadorTwo TEXT NOT NULL,
+            created_at DATE DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATE,
+            FOREIGN KEY (user_cadastro) REFERENCES users(id)
+        );
+        INSERT OR REPLACE INTO users (username, senha, role) VALUES ('Smithfodao', '12345678', 'ADMIN');
         INSERT OR REPLACE INTO users (username, senha, role) VALUES ('user', '12345678', 'USER');
         INSERT OR REPLACE INTO users (username, senha, role) VALUES ('super', '12345678', 'SUPER');
         `);

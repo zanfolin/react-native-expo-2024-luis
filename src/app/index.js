@@ -9,7 +9,7 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 export default function App() {
     const { signIn } = useAuth();
-    const [username, setUsername] = useState('super');
+    const [username, setUsername] = useState('Smithfodao');
     const [senha, setSenha] = useState('12345678');
     const [passwordVisibility, setPasswordVisibility] = useState(true);
 

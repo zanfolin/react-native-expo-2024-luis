@@ -5,24 +5,23 @@ import TopBar from '../../components/TopBar';
 import Constants from 'expo-constants';
 
 export default function AddDupla() {
-    const [nome01, setNome01] = useState("Participante 01");
-    const [nome02, setNome02] = useState("Participante 02");
+    const [nome01, setNome01] = useState("");
+    const [nome02, setNome02] = useState("");
     const statusBarHeight = Constants.statusBarHeight;
     return (
         <View style={styles.cont}>
             <TopBar />
             <View style={styles.container}>
                 <View style={styles.formContainer}>
-                    <Text style={styles.title}>Adicionar Duplas</Text>
-                    <TextInput
+                    <Text
                         onChangeText={setNome01}
-                        placeholder='Digite o nome aqui'
+                        placeholder='Jogador 1'
                         style={styles.input}
                         value={nome01}
                     />
                     <TextInput
                         onChangeText={setNome02}
-                        placeholder='Digite o nome aqui'
+                        placeholder='Jogador 2'
                         style={styles.input}
                         value={nome02}
                     />
@@ -44,10 +43,10 @@ export default function AddDupla() {
 }
 
 const styles = StyleSheet.create({
-    cont:{
+    cont: {
         flex: 1,
         backgroundColor: '#ffa',
-        paddingTop: Constants.statusBarHeight+5
+        paddingTop: Constants.statusBarHeight + 5
     },
     container: {
         flex: 1,
@@ -55,7 +54,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#ffa',
         padding: 20,
-        paddingTop: Constants.statusBarHeight+5
+        paddingTop: Constants.statusBarHeight + 5
     },
     formContainer: {
         width: '100%',
