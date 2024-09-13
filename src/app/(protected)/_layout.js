@@ -34,7 +34,7 @@ const DrawerLayout = () => {
           options={{ 
             drawerLabel: "Início", 
             drawerIcon: () => <Ionicons name="home" size={35} color="#000" />,
-            headerShown: false, // Oculta o header
+            headerShown: false,
           }} 
         />
         <Drawer.Screen 
@@ -42,7 +42,7 @@ const DrawerLayout = () => {
           options={{ 
             drawerLabel: "Adicionar Duplas", 
             drawerIcon: () => <Ionicons name="add-circle" size={35} color="#000" />,
-            headerShown: false, // Oculta o header
+            headerShown: false
           }} 
         />
         <Drawer.Screen 
@@ -50,7 +50,7 @@ const DrawerLayout = () => {
           options={{ 
             drawerLabel: "Duplas", 
             drawerIcon: () => <Ionicons name="list" size={35} color="#000" />,
-            headerShown: false, // Oculta o header
+            headerShown: false,
           }} 
         />
         <Drawer.Screen 
@@ -58,7 +58,7 @@ const DrawerLayout = () => {
           options={{ 
             drawerLabel: "Perfil", 
             drawerIcon: () => <Ionicons name="person" size={35} color="#000" />,
-            headerShown: false, // Oculta o header
+            headerShown: false,
           }} 
         />
       </Drawer>
