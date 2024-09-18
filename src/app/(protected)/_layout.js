@@ -29,37 +29,61 @@ const DrawerLayout = () => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer drawerContent={(props) => <CostumDrawerContent {...props} />}>
-        <Drawer.Screen 
-          name="index" 
-          options={{ 
-            drawerLabel: "Início", 
+        <Drawer.Screen
+          name="index"
+          options={{
+            drawerLabel: "Início",
             drawerIcon: () => <Ionicons name="home" size={35} color="#000" />,
             headerShown: false,
-          }} 
+            drawerActiveBackgroundColor: "#ffa500",
+            drawerActiveTintColor: "#fff",
+            drawerLabelStyle: {
+              fontFamily: "bold"
+            }
+
+          }}
         />
-        <Drawer.Screen 
-          name="addDupla" 
-          options={{ 
-            drawerLabel: "Adicionar Duplas", 
+        <Drawer.Screen
+          name="addDupla"
+          options={{
+            drawerLabel: "Adicionar Duplas",
             drawerIcon: () => <Ionicons name="add-circle" size={35} color="#000" />,
-            headerShown: false
-          }} 
+            headerShown: false,
+            drawerActiveBackgroundColor: "#ffa500",
+            drawerActiveTintColor: "#fff",
+            drawerLabelStyle: {
+              fontFamily: "bold"
+            }
+
+          }}
         />
-        <Drawer.Screen 
-          name="listaDuplas" 
-          options={{ 
-            drawerLabel: "Duplas", 
+        <Drawer.Screen
+          name="listaDuplas"
+          options={{
+            drawerLabel: "Duplas",
             drawerIcon: () => <Ionicons name="list" size={35} color="#000" />,
             headerShown: false,
-          }} 
+            drawerActiveBackgroundColor: "#ffa500",
+            drawerActiveTintColor: "#fff",
+            drawerLabelStyle: {
+              fontFamily: "bold"
+            }
+
+          }}
         />
-        <Drawer.Screen 
-          name="perfil" 
-          options={{ 
-            drawerLabel: "Perfil", 
+        <Drawer.Screen
+          name="perfil"
+          options={{
+            drawerLabel: "Perfil",
+            drawerActiveBackgroundColor: "#ffa500",
             drawerIcon: () => <Ionicons name="person" size={35} color="#000" />,
             headerShown: false,
-          }} 
+            drawerActiveTintColor: "#fff",
+            drawerActiveBackgroundColor: "#ffa500",
+            drawerLabelStyle: {
+              fontFamily: "bold"
+            }
+          }}
         />
       </Drawer>
     </GestureHandlerRootView>

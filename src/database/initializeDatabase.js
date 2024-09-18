@@ -20,6 +20,7 @@ export async function initializeDatabase(database) {
             user_cadastro INTEGER NOT NULL,
             jogadorOne TEXT NOT NULL,
             jogadorTwo TEXT NOT NULL,
+            torneio TEXT NOT NULL,
             created_at DATE DEFAULT CURRENT_TIMESTAMP,
             updated_at DATE,
             FOREIGN KEY (user_cadastro) REFERENCES users(id)
