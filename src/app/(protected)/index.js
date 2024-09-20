@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     bannerContainer: {
-        height: 500,
+        height: 520,
     },
 });

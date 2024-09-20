@@ -100,7 +100,7 @@ export default function AddDupla() {
             <TopBar />
             <View style={styles.container}>
                 <View style={styles.containerTextinhoExplicando}>
-                    <Text style={styles.textinhoExplicando}>Adicione e controle duplas utilizando o nome de dois jogadores</Text>
+                    <Text style={styles.textinhoExplicando}>Adicione e controle duplas utilizando o nome de dois jogadores e selecionando o torneio.</Text>
                 </View>
                 {!showForm && (
                     <View style={styles.buttonContainer}>
@@ -252,22 +252,10 @@ export default function AddDupla() {
                                     <View style={styles.modalContainer}>
                                         <Text style={styles.alertTitle}>Tem certeza disso?</Text>
                                         <Text style={styles.alertMessage}>Os dados serão apagados!</Text>
-                                        <TouchableOpacity style={{
-                                            backgroundColor: '#ff6f61',
-                                            paddingVertical: 10,
-                                            paddingHorizontal: 26,
-                                            borderRadius: 5,
-                                            marginBottom: 10,
-                                        }} onPress={close}>
+                                        <TouchableOpacity style={{ backgroundColor: '#ff6f61', paddingVertical: 10, paddingHorizontal: 26, borderRadius: 5, marginBottom: 10, }} onPress={close}>
                                             <Text style={styles.alertButtonText}>Sim, desejo cancelar!</Text>
                                         </TouchableOpacity>
-                                        <TouchableOpacity style={{
-                                            backgroundColor: '#4caf50',
-                                            paddingVertical: 10,
-                                            paddingHorizontal: 20,
-                                            borderRadius: 5,
-                                            
-                                        }} onPress={hideConfirmation}>
+                                        <TouchableOpacity style={{ backgroundColor: '#4caf50', paddingVertical: 10, paddingHorizontal: 20, borderRadius: 5, }} onPress={hideConfirmation}>
                                             <Text style={styles.alertButtonText}>Não, continuarei aqui!</Text>
                                         </TouchableOpacity>
                                     </View>
@@ -439,6 +427,7 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     buttonText: {
+        textAlign: 'center',
         color: '#ffffff',
         fontSize: 16,
         fontFamily: 'bold',
