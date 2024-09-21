@@ -6,6 +6,7 @@ import Constants from 'expo-constants';
 import { Ionicons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
 
+
 export default function AddDupla() {
     const [nome01, setNome01] = useState("");
     const [nome02, setNome02] = useState("");
@@ -73,7 +74,7 @@ export default function AddDupla() {
         setModalVisible(false);
         setNome01("");
         setNome02("");
-        router.push("/");
+        router.back("/");
         setShowForm(false);
     };
     const hideAlertMessage = () => {
@@ -117,7 +118,7 @@ export default function AddDupla() {
                 {showForm && (
                     <Animated.View style={[styles.formContainer, { transform: [{ translateY: formTranslateY }] }]}>
                         <TouchableOpacity onPress={hideFormContainer} style={styles.closeButton}>
-                            <Text style={styles.closeButtonText}>×</Text>
+                            <Ionicons name="close" size={24} color="#ffffff" />
                         </TouchableOpacity>
                         <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: "center", alignItems: "center" }} showsVerticalScrollIndicator={false}>
                             <View style={styles.input}>
@@ -144,6 +145,7 @@ export default function AddDupla() {
                                     style={{ width: '100%' }}
                                     selectedValue={id}
                                     onValueChange={(itemValue, index) => setId(itemValue)}
+                                    dropdownIconColor={"#333"}
                                 >
                                     {sugestoes.map((item, index) => {
                                         return (
@@ -490,12 +492,10 @@ const styles = StyleSheet.create({
         fontFamily: 'bolditalic',
     },
     closeButton: {
-        position: 'absolute',
-        top: 10,
-        right: 10,
+        marginBottom: 20,
         backgroundColor: '#ff6f61',
         borderRadius: 15,
-        width: 30,
+        width: 100,
         height: 30,
         justifyContent: 'center',
         alignItems: 'center',

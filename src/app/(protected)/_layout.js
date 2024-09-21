@@ -10,7 +10,7 @@ function CostumDrawerContent(props) {
   return (
     <View style={{ flex: 1 }}>
       <View>
-        <Image source={require("../../assets/images/logobeachduo.png")} style={{ width: 200, height: 200, alignSelf: "center", marginTop: 10, marginBottom: -30 }} />
+        <Image source={require("../../assets/images/giacomelli.jpg")} style={{ width: 120, height: 120, alignSelf: "center", marginTop: 100, borderRadius:60 }} />
       </View>
       <View>
         <Text style={{ fontSize: 20, textAlign: "center", fontFamily: "bold" }}>{user.user?.username || "Faça login"}</Text>

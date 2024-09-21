@@ -25,7 +25,7 @@ export async function initializeDatabase(database) {
             updated_at DATE,
             FOREIGN KEY (user_cadastro) REFERENCES users(id)
         );
-        INSERT OR REPLACE INTO users (username, senha, role) VALUES ('Smithfodao', '12345678', 'ADMIN');
+        INSERT OR REPLACE INTO users (username, senha, role) VALUES ('Smith Fodão', '12345678', 'ADMIN');
         INSERT OR REPLACE INTO users (username, senha, role) VALUES ('user', '12345678', 'USER');
         INSERT OR REPLACE INTO users (username, senha, role) VALUES ('super', '12345678', 'SUPER');
         `);

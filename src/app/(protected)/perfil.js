@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { useAuth } from "../../hooks/Auth";
 import Constants from 'expo-constants';
-import avatar from '../../assets/images/logobeachduo.png';
+import avatar from '../../assets/images/giacomelli.jpg';
 export default function Perfil() {
     const { user, signOut } = useAuth();
     const statusBarHeight = Constants.statusBarHeight;
@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
         marginVertical: 8,
     },
     actionButtonText: {
+        fontFamily: 'bolditalic',
         color: '#fff',
         fontSize: 16,
         marginLeft: 8,
