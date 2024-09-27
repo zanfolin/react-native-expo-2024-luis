@@ -4,8 +4,13 @@ import { Picker } from '@react-native-picker/picker';
 import { router } from "expo-router";
 import Constants from 'expo-constants';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import TopBar from '../../components/TopBar';
 
 export default function List() {
+    const comeBack = () => {
+        router.back('/');
+        setTorneioSelecionado('Todos');
+    };
     const [torneios, setTorneios] = useState([
         'Todos',
         '5° Open da Sun7',
@@ -38,68 +43,77 @@ export default function List() {
             <Text style={styles.tournamentText}>{item.torneio}</Text>
         </View>);
     return (
-        <View style={styles.container}>
-            <View style={styles.topBar}>
-                <Ionicons name="filter" size={20} color="#fff" />
-                <Text style={styles.topBarText}>
-                    Selecione o Torneio
-                </Text>
-                <View style={styles.pickerContainer}>
-                    <Ionicons name="trophy" size={24} color="#fff" />
-                    <Picker
-                        selectedValue={torneioSelecionado}
-                        style={styles.picker}
-                        onValueChange={(itemValue) => setTorneioSelecionado(itemValue)}
-                        dropdownIconColor="#fff" 
-
-                    >
-                        {torneios.map(torneio => (
-                            <Picker.Item key={torneio} label={torneio} value={torneio} />
-                        ))}
-                    </Picker>
-                </View>
+        <>
+            <View style={styles.top}>
+                <TopBar />
             </View>
-
-            <Text style={styles.title}>Duplas de Beach Tennis</Text>
-
-            <FlatList
-                data={filtrarDuplas()}
-                keyExtractor={item => item.id}
-                renderItem={renderItem}
-                contentContainerStyle={styles.listContent}
-            />
-
-            <View style={styles.counterContainer}>
-                <Ionicons name="people" size={28} color="#ffa500" style={styles.counterIcon} />
-                <View style={styles.counterContent}>
-                    <Text style={styles.counterText}>
-                        Duplas cadastradas em:
+            <View style={styles.container}>
+                <View style={styles.topBar}>
+                    <Ionicons name="filter" size={20} color="#fff" />
+                    <Text style={styles.topBarText}>
+                        Selecione o Torneio
                     </Text>
-                    <Text style={styles.tournamentName}>
-                        {torneioSelecionado}
-                    </Text>
-                    <Text style={styles.counterNumber}>
-                        {contarDuplas()}
-                    </Text>
+                    <View style={styles.pickerContainer}>
+                        <Ionicons name="trophy" size={24} color="#fff" />
+                        <Picker
+                            selectedValue={torneioSelecionado}
+                            style={styles.picker}
+                            onValueChange={(itemValue) => setTorneioSelecionado(itemValue)}
+                            dropdownIconColor="#fff"
+
+                        >
+                            {torneios.map(torneio => (
+                                <Picker.Item key={torneio} label={torneio} value={torneio} />
+                            ))}
+                        </Picker>
+                    </View>
                 </View>
-            </View>
 
-            <TouchableOpacity style={styles.backButton} onPress={() => router.back("/")}>
-                <Ionicons name="arrow-back" size={20} color="#fff" />
-                <Text style={styles.backButtonText}>
-                    Voltar
-                </Text>
-            </TouchableOpacity>
-        </View>
+                <Text style={styles.title}>Duplas de Beach Tennis</Text>
+
+                <FlatList
+                    data={filtrarDuplas()}
+                    keyExtractor={item => item.id}
+                    renderItem={renderItem}
+                    contentContainerStyle={styles.listContent}
+                    showsVerticalScrollIndicator={false}
+                />
+
+                <View style={styles.counterContainer}>
+                    <Ionicons name="people" size={28} color="#ffa500" style={styles.contadorIcon} />
+                    <View style={styles.contadorConteudo}>
+                        <Text style={styles.contadorTexto}>
+                            Duplas cadastradas em:
+                        </Text>
+                        <Text style={styles.torneioNome}>
+                            {torneioSelecionado}
+                        </Text>
+                        <Text style={styles.contador}>
+                            {contarDuplas()}
+                        </Text>
+                    </View>
+                </View>
+
+                <TouchableOpacity style={styles.backButton} onPress={comeBack}>
+                    <Ionicons name="arrow-back" size={20} color="#fff" />
+                    <Text style={styles.backButtonText}>
+                        Voltar
+                    </Text>
+                </TouchableOpacity>
+            </View>
+        </>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
+    top: {
+        paddingTop: Constants.statusBarHeight,
         backgroundColor: '#ffa',
+    },
+    container: {
+        backgroundColor: '#ffa',
+        flex: 1,
         padding: 20,
-        paddingTop: Constants.statusBarHeight + 10,
     },
     topBar: {
         display: 'flex',
@@ -112,7 +126,7 @@ const styles = StyleSheet.create({
     },
     topBarText: {
         fontSize: 20,
-        fontFamily:'bold',
+        fontFamily: 'bold',
         color: '#fff',
         marginBottom: 10,
         textAlign: 'center',
@@ -132,7 +146,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 28,
-        fontFamily:'bold',
+        fontFamily: 'bold',
         color: '#ffa500',
         marginBottom: 20,
         textAlign: 'center',
@@ -155,14 +169,14 @@ const styles = StyleSheet.create({
     },
     itemText: {
         fontSize: 18,
-        fontFamily:'bold',
+        fontFamily: 'bold',
         color: '#333',
     },
     tournamentText: {
         fontSize: 14,
         color: '#888',
         marginTop: 5,
-        fontFamily:'bolditalic',
+        fontFamily: 'bolditalic',
     },
     counterContainer: {
         flexDirection: 'row',
@@ -176,27 +190,27 @@ const styles = StyleSheet.create({
         borderColor: '#ffa500',
         borderWidth: 1,
     },
-    counterIcon: {
+    contadorIcon: {
         marginRight: 10,
     },
-    counterContent: {
+    contadorConteudo: {
         flexDirection: 'column',
         alignItems: 'center',
     },
-    counterText: {
+    contadorTexto: {
         fontSize: 18,
-        fontFamily:'bold',
+        fontFamily: 'bold',
         color: '#333',
     },
-    tournamentName: {
+    torneioNome: {
         fontSize: 16,
-        fontFamily:'bolditalic',
+        fontFamily: 'bolditalic',
         color: '#ffa500',
         marginTop: 5,
     },
-    counterNumber: {
+    contador: {
         fontSize: 28,
-        fontFamily:'semibold',
+        fontFamily: 'semibold',
         color: '#4d4d4d',
         marginTop: 10,
     },
@@ -210,10 +224,12 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         marginTop: 20,
         alignItems: 'center',
+        elevation: 5,
+
     },
     backButtonText: {
         color: '#fff',
         fontSize: 16,
-        fontFamily :'semibolditalic',
+        fontFamily: 'bolditalic',
     },
 });

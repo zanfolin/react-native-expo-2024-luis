@@ -65,9 +65,8 @@ const styles = StyleSheet.create({
         fontFamily: "bolditalic",
     },
     imagem: {
-        width: 300,
-        height: 300,
-        alignSelf: 'center',
+        width: 350,
+        height: 350,
         marginTop: 20,
         borderRadius: 20,
     },
@@ -85,7 +84,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         paddingBottom: 10,
-
     },
     indicatorContainer: {
         flexDirection: 'row',

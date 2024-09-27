@@ -57,7 +57,7 @@ export default function AddDupla() {
         setNome02("");
     };
     const cancelForm = () => {
-        setConfirmationVisible(true);
+            setConfirmationVisible(true);
     };
     const hideConfirmation = () => {
         setConfirmationVisible(false);
