@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useAuth } from '../../hooks/Auth/index';
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 
-function CostumDrawerContent(props) {
+function CustomDrawerContent(props) {
   const { user, signOut } = useAuth();
   return (
     <View style={{ flex: 1 }}>
@@ -13,7 +13,7 @@ function CostumDrawerContent(props) {
         <Image source={require("../../assets/images/giacomelli.jpg")} style={{ width: 120, height: 120, alignSelf: "center", marginTop: 100, borderRadius:60 }} />
       </View>
       <View>
-        <Text style={{ fontSize: 20, textAlign: "center", fontFamily: "bold" }}>{user.user?.username || "Faça login"}</Text>
+        <Text style={{ fontSize: 20, textAlign: "center", fontFamily: "bold" }}>{user?.user?.username || "Faça login"}</Text>
       </View>
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
@@ -28,7 +28,7 @@ function CostumDrawerContent(props) {
 const DrawerLayout = () => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <Drawer drawerContent={(props) => <CostumDrawerContent {...props} />}>
+      <Drawer drawerContent={(props) => <CustomDrawerContent {...props} />}>
         <Drawer.Screen
           name="index"
           options={{

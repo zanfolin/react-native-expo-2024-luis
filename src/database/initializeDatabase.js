@@ -17,13 +17,11 @@ export async function initializeDatabase(database) {
 
         CREATE TABLE IF NOT EXISTS duplas (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_cadastro INTEGER NOT NULL,
             jogadorOne TEXT NOT NULL,
             jogadorTwo TEXT NOT NULL,
             torneio TEXT NOT NULL,
             created_at DATE DEFAULT CURRENT_TIMESTAMP,
-            updated_at DATE,
-            FOREIGN KEY (user_cadastro) REFERENCES users(id)
+            updated_at DATE
         );
         INSERT OR REPLACE INTO users (username, senha, role) VALUES ('Giacomelli', '12345678', 'ADMIN');
         INSERT OR REPLACE INTO users (username, senha, role) VALUES ('user', '12345678', 'USER');
