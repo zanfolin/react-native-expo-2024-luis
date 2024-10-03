@@ -15,7 +15,18 @@ export function useUsersDatabase() {
             throw error;
         }
     }
-    return{
-        authUser,
+    async function getAllUsers(){
+        try {
+            const result = await database.getAllAsync(`
+                SELECT id, username FROM users
+                `);
+            return result;
+        } catch (error) {
+            console.error("useUsersDatabase.getAllUsers: ", error);
+            throw error;
+        }
+    }
+    return {
+        authUser, getAllUsers
     }
 }

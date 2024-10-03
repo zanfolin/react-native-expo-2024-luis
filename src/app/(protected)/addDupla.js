@@ -6,6 +6,9 @@ import Constants from 'expo-constants';
 import { Ionicons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
 import { z } from "zod";
+import { useDuplasDatabase } from "../../database/useDuplasDatabase";
+import { useUsersDatabase} from "../../database/useUsersDatabase";
+
 
 export default function AddDupla() {
     const [nome01, setNome01] = useState("");
@@ -23,16 +26,19 @@ export default function AddDupla() {
         jogadorTwo: z.string().min(3),
         torneio: z.string().min(3),
     });
+    const { createDupla } = useDuplasDatabase();
     const handleSubmit = async () => {
-        const dupla = {
+        const duplas = {
             id: id,
             jogadorOne: nome01,
             jogadorTwo: nome02,
-            torneio: sugestoes.find((item) => item.id === id)?.nome,
+            torneio: sugestoes.find((item) => item.id === id)?.nome
         };
         try {
-            const result = await duplaSchema.parseAsync(dupla);
+            const result = await duplaSchema.parseAsync(duplas);
+            const { insertedID } = await createDupla(duplas);
             console.log(result);
+            console.log(insertedID)
         }
         catch (error) {
             console.error(error);
@@ -291,7 +297,7 @@ export default function AddDupla() {
             </View >
         </KeyboardAvoidingView>
     );
-};
+}
 
 const styles = StyleSheet.create({
     alertCampoVazio: {
