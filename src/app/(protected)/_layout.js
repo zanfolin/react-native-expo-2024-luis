@@ -14,6 +14,7 @@ function CustomDrawerContent(props) {
   const handleLogOut = async () => {
     await signOut();
   };
+
   return (
     <View style={{ flex: 1 }}>
       <View>

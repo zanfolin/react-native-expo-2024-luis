@@ -1,13 +1,15 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createContext, useContext, useEffect, useState } from "react";
-import { ActivityIndicator, Text, View } from "react-native";
 import { useUsersDatabase } from "../../database/useUsersDatabase";
+
 const AuthContext = createContext({});
+
 export const Role = {
   SUPER: "SUPER",
   ADM: "ADM",
   USER: "USER",
 };
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState({
     autenticated: false,
@@ -53,6 +55,7 @@ export function AuthProvider({ children }) {
       role: response.role,
     });
   };
+
   const signOut = async () => {
     await AsyncStorage.removeItem("@duplas:user");
     setUser({

@@ -1,21 +1,38 @@
-import { router, Stack, useSegments } from "expo-router";
+import {
+  router,
+  Stack,
+  useNavigation,
+  usePathname,
+  useSegments,
+} from "expo-router";
 import { useEffect } from "react";
 import { AppProvider } from "../hooks";
 import { useAuth } from "../hooks/Auth";
+
 const StackLayout = () => {
   const { user } = useAuth();
   const segments = useSegments();
-  useEffect(() => {
-    console.log("user", user);
-    console.log("status", !user?.autenticated);
+  const pathname = usePathname();
+  const navigation = useNavigation();
 
-    if (!user?.autenticated) {
-      console.log("deveria voltar");
+  useEffect(() => {
+    console.log("\n\n\nLayout user", user);
+    console.log("Layout navigation", navigation.getState());
+
+    if (user?.autenticated === false) {
       router.replace("/");
     } else {
-      router.replace("(protected)");
+      router.push("(protected)");
     }
   }, [user]);
+
+  useEffect(() => {
+    console.log("Layout pathname", pathname);
+  }, [pathname]);
+
+  useEffect(() => {
+    console.log("Layout segments", segments);
+  }, [segments]);
 
   return (
     <Stack>
