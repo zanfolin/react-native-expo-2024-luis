@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "react-native-expo-2024",
-    "slug": "react-native-expo-2024",
-    "scheme": "react-native-expo-2024",
+    "name": "react-native-expo-2024-luis",
+    "slug": "react-native-expo-2024-luis",
+    "scheme": "react-native-expo-2024-luis",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/images/logobeachduo.png",
@@ -15,7 +15,7 @@
     "ios": {
       "supportsTablet": true
     },
-    "android": { 
+    "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/logobeachduo.png",
         "backgroundColor": "#fff"
@@ -24,9 +24,6 @@
     "web": {
       "favicon": "./src/assets/images/logobeachduo.png"
     },
-    "plugins": [
-      "expo-router",
-      "expo-font"
-    ]
+    "plugins": ["expo-router", "expo-font"]
   }
 }
